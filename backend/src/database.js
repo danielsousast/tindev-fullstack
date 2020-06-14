@@ -7,7 +7,7 @@ class Database {
 
     init(){
         mongoose.connect(
-            'mongodb://localhost:27017/tindev',
+            'mongodb+srv://daniel:s1stemas@developer-qeffp.gcp.mongodb.net/tindev?retryWrites=true&w=majority',
             {useNewUrlParser:true, useUnifiedTopology:true}
         );
     }

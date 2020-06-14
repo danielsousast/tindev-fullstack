@@ -29,21 +29,21 @@ class DevController {
     }
 
     async store(req, res) {
-        const {user} = req.body;
+        const {username} = req.body;
 
-        const devExists = await Dev.findOne({user});
+        const devExists = await Dev.findOne({name:username});
 
         if(devExists) {
-            return res.json(DevExists);
+            return res.json(devExists);
         }
 
-        const response = await axios.get(`https://api.github.com/users/${user}`);
+        const response = await axios.get(`https://api.github.com/users/${username}`);
 
         const {name, bio, avatar_url:avatar} = response.data;
 
         const dev = await Dev.create({
             name, 
-            user,
+            user:username,
             bio,
             avatar
         });
